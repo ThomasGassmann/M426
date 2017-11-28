@@ -1,9 +1,0 @@
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\bin\Debug\netstandard2.0\ProductManagement.DataAccess.deps.json
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\bin\Debug\netstandard2.0\ProductManagement.DataAccess.dll
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\bin\Debug\netstandard2.0\ProductManagement.DataAccess.pdb
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.csprojResolveAssemblyReference.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.csproj.CoreCompileInputs.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.AssemblyInfoInputs.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.AssemblyInfo.cs
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.dll
-C:\Repos\M426\ProductManagement\ProductManagement.DataAccess\obj\Debug\netstandard2.0\ProductManagement.DataAccess.pdb

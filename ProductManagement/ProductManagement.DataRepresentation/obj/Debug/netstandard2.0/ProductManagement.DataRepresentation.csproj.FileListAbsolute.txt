@@ -1,9 +1,0 @@
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\bin\Debug\netstandard2.0\ProductManagement.DataRepresentation.deps.json
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\bin\Debug\netstandard2.0\ProductManagement.DataRepresentation.dll
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\bin\Debug\netstandard2.0\ProductManagement.DataRepresentation.pdb
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.csprojResolveAssemblyReference.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.csproj.CoreCompileInputs.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.AssemblyInfoInputs.cache
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.AssemblyInfo.cs
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.dll
-C:\Repos\M426\ProductManagement\ProductManagement.DataRepresentation\obj\Debug\netstandard2.0\ProductManagement.DataRepresentation.pdb
