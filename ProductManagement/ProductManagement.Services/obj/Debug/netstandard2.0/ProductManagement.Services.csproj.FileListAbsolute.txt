@@ -1,0 +1,9 @@
+C:\Repos\M426\ProductManagement\ProductManagement.Services\bin\Debug\netstandard2.0\ProductManagement.Services.deps.json
+C:\Repos\M426\ProductManagement\ProductManagement.Services\bin\Debug\netstandard2.0\ProductManagement.Services.dll
+C:\Repos\M426\ProductManagement\ProductManagement.Services\bin\Debug\netstandard2.0\ProductManagement.Services.pdb
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.csprojResolveAssemblyReference.cache
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.csproj.CoreCompileInputs.cache
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.AssemblyInfoInputs.cache
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.AssemblyInfo.cs
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.dll
+C:\Repos\M426\ProductManagement\ProductManagement.Services\obj\Debug\netstandard2.0\ProductManagement.Services.pdb
