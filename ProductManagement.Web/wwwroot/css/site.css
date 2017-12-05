@@ -33,3 +33,7 @@
         display: none;
     }
 }
+
+.create-form-input {
+    margin: 5px;
+}

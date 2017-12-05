@@ -1,0 +1,62 @@
+﻿@model ViewProductViewModel[]
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Edit</th>
+        <th>Observe</th>
+    </tr>
+    @foreach (var product in this.Model)
+    {
+        <tr>
+            <td>@product.Title</td>
+            <td>@product.Price</td>
+            <td>@product.Created</td>
+            <td>@product.Updated</td>
+            <td><a class="btn btn-default" href="/Product/Edit/@product.Id">Edit</a></td>
+            <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#mailModal@(product.Id)">Observe</button></td>
+        </tr>
+    }
+    @if (!this.Model.Any())
+    {
+        <tr>
+            <td colspan="4">Nothing to show here...</td>
+        </tr>
+    }
+    <tr>
+        <td><button onclick="previous()" class="btn btn-default">Previous</button></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button onclick="next()" class="btn btn-default">Next</button></td>
+    </tr>
+</table>
+
+@foreach (var product in this.Model)
+{
+    <div class="modal fade" id="mailModal@(product.Id)" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Observe @product.Title</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="error"></div>
+                    <input type="email" class="form-control" id="mail" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="observe(@product.Id)">Observe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
