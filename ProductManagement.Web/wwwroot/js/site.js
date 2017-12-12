@@ -1,4 +1,6 @@
-﻿(function (undefined) {
+﻿// Defines an IFFY to make sure undefined wasn't overridden.
+(function (undefined) {
+    // Gets an url parameter by its name
     function getParameterByName(name, url) {
         if (!url) {
             url = window.location.href;
@@ -15,6 +17,7 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
+    // loads the previous page on the list view.
     window.previous = function () {
         var page = getParameterByName('page');
         var pageSize = getParameterByName('pageSize');
@@ -30,6 +33,7 @@
         }
     };
 
+    // loads the next page on the list view.
     window.next = function () {
         var page = getParameterByName('page');
         var pageSize = getParameterByName('pageSize');
@@ -43,20 +47,25 @@
         }
     };
 
+    // observes a product with the given id.
     window.observe = function (productId) {
         var mail = $('#mail').val();
+        // Execute AJAX requests.
         $.ajax({
             url: '/api/Product/Observer?productId=' + productId + '&email=' + mail,
             method: 'POST',
             success: function (data) {
+                // Close the modal dialog, if the action was successful.
                 $('#mailModal' + productId).modal('toggle');
             },
             error: function (xhr) {
+                // If the mail wasn't valid, show an error message.
                 $('#error').html('Please enter a valid mail address');
             }
         });
     };
 
+    // Loads the page with the given page and page size.
     function load(page, pageSize) {
         window.location = '/Product?page=' + page + '&pageSize=' + pageSize;
     }

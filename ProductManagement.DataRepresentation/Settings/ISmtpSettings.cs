@@ -1,43 +1,43 @@
-﻿namespace ProductManagement.DataRepresentation.Dto
+﻿namespace ProductManagement.DataRepresentation.Settings
 {
     /// <summary>
-    /// Stores the SMTP configuration.
+    /// Defines all settings for the SMTP client.
     /// </summary>
-    public class MailConfigurationDto
+    public interface ISmtpSettings
     {
         /// <summary>
         /// Gets or sets the SMTP host.
         /// </summary>
-        public string Host { get; set; }
+        string Host { get; set; }
 
         /// <summary>
         /// Gets or sets the SMTP port.
         /// </summary>
-        public int Port { get; set; }
+        int Port { get; set; }
 
         /// <summary>
         /// Gets or sets the SMTP user name.
         /// </summary>
-        public string UserName { get; set; }
+        string UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password.
         /// </summary>
-        public string Password { get; set; }
+        string Password { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to use SSL or not.
         /// </summary>
-        public bool UseSsl { get; set; }
+        bool UseSsl { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to use the default credentials.
         /// </summary>
-        public bool UseDefaultCredentials { get; set; }
+        bool UseDefaultCredentials { get; set; }
 
         /// <summary>
         /// Gets or sets the mail address, from which emails are sent.
         /// </summary>
-        public string From { get; set; }
+        string From { get; set; }
     }
 }

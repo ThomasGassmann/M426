@@ -1,29 +1,43 @@
 ﻿namespace ProductManagement.Services.ChangeNotification
 {
-    using ProductManagement.DataRepresentation.Dto;
+    using ProductManagement.DataRepresentation.Settings;
     using System.Net;
     using System.Net.Mail;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Defines an observer for a product and sends a mail if a product changes.
+    /// </summary>
     public class ProductMailObserver : IObserver<ObservableProduct>
     {
+        /// <summary>
+        /// Contains the <see cref="SmtpClient"/> to send the mails.
+        /// </summary>
         private readonly SmtpClient smtpClient;
 
-        private readonly MailConfigurationDto mailConfiguration;
+        /// <summary>
+        /// Contains the settings for the SMTP client.
+        /// </summary>
+        private readonly ISmtpSettings mailConfiguration;
 
-        public ProductMailObserver(MailConfigurationDto mailConfiguration)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductMailObserver"/> class.
+        /// </summary>
+        /// <param name="settings">The <see cref="ISmtpSettings"/> dependency.</param>
+        public ProductMailObserver(ISmtpSettings settings)
         {
-            this.mailConfiguration = mailConfiguration;
+            this.mailConfiguration = settings;
             this.smtpClient = this.InitializeSmtpClient(
-                mailConfiguration.Host,
-                mailConfiguration.Port,
-                mailConfiguration.UserName,
-                mailConfiguration.Password,
-                mailConfiguration.UseDefaultCredentials,
-                mailConfiguration.UseSsl,
-                mailConfiguration.From);
+                settings.Host,
+                settings.Port,
+                settings.UserName,
+                settings.Password,
+                settings.UseDefaultCredentials,
+                settings.UseSsl,
+                settings.From);
         }
 
+        /// <inheritdoc />
         public async Task Update(ObservableProduct changed)
         {
             var message = new MailMessage(this.mailConfiguration.From, changed.Email)
@@ -34,9 +48,19 @@
             await this.smtpClient.SendMailAsync(message);
         }
 
-        private SmtpClient InitializeSmtpClient(string host, int port, string userName, string password, bool useDefaultCredentials, bool useSsl, string from)
-        {
-            return new SmtpClient
+        /// <summary>
+        /// Initializes a new SMTP client.
+        /// </summary>
+        /// <param name="host">The SMTP host.</param>
+        /// <param name="port">The SMTP port.</param>
+        /// <param name="userName">The SMTP user name.</param>
+        /// <param name="password">The SMTP password.</param>
+        /// <param name="useDefaultCredentials">Dertermines whether to use default credentials.</param>
+        /// <param name="useSsl">Determines whether to use SSL.</param>
+        /// <param name="from">The SMTP sender.</param>
+        /// <returns>Returns the created <see cref="SmtpClient"/>.</returns>
+        private SmtpClient InitializeSmtpClient(string host, int port, string userName, string password, bool useDefaultCredentials, bool useSsl, string from) =>
+            new SmtpClient
             {
                 Host = host,
                 Port = port,
@@ -45,6 +69,5 @@
                 EnableSsl = useSsl,
                 DeliveryMethod = SmtpDeliveryMethod.Network
             };
-        }
     }
 }

@@ -6,13 +6,24 @@
     using ProductManagement.Services.Core.Product.Creation.Strategy;
     using ProductManagement.Services.UoW;
 
+    /// <summary>
+    /// Defines the default service to create products.
+    /// </summary>
     public class ProductCreationService : IProductCreationService
     {
+        /// <summary>
+        /// The unit of work factory to create transactions on the database.
+        /// </summary>
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductCreationService"/> class.
+        /// </summary>
+        /// <param name="unitOfWorkFactory">The <see cref="IUnitOfWorkFactory"/> dependency.</param>
         public ProductCreationService(IUnitOfWorkFactory unitOfWorkFactory) =>
             this.unitOfWorkFactory = unitOfWorkFactory;
 
+        /// <inheritdoc />
         public long CreateProduct(ProductCreationDto dto, IProductCreationStrategy creationStrategy)
         {
             using (var unitOfWork = this.unitOfWorkFactory.CreateUnitOfWork())

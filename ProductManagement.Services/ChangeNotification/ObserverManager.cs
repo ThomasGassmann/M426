@@ -1,35 +1,36 @@
 ﻿namespace ProductManagement.Services.ChangeNotification
 {
-    using ProductManagement.DataRepresentation.Dto;
-    using System;
+    using ProductManagement.DataRepresentation.Settings;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
-    public class ObserverManager
+    
+    /// <summary>
+    /// The class to manage all observables and observers.
+    /// </summary>
+    public class ObserverManager : IObserverManager
     {
-        private static readonly Lazy<ObserverManager> instance =
-            new Lazy<ObserverManager>(() => new ObserverManager());
-
+        /// <summary>
+        /// Contains the observer, which will send an email to the user, if a product has changed.
+        /// </summary>
         private readonly ProductMailObserver productMailObserver;
 
+        /// <summary>
+        /// Contains all observables for mapped for a given product id.
+        /// Every product has multiple observables.
+        /// </summary>
         private readonly IDictionary<long, List<ObservableProduct>> observed = new Dictionary<long, List<ObservableProduct>>();
 
-        private ObserverManager()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObserverManager"/> class.
+        /// It creates the observer.
+        /// </summary>
+        /// <param name="settings">The <see cref="ISmtpSettings"/> dependency.</param>
+        public ObserverManager(ISmtpSettings settings)
         {
-            this.productMailObserver = new ProductMailObserver(new MailConfigurationDto
-            {
-                From = "productmanagement.m426@gmail.com",
-                Host = "smtp.gmail.com",
-                Password = "aslk34!$j",
-                Port = 587,
-                UserName = "productmanagement.m426@gmail.com",
-                UseDefaultCredentials = false,
-                UseSsl = true
-            });
+            this.productMailObserver = new ProductMailObserver(settings);
         }
 
-        public static ObserverManager Instance => ObserverManager.instance.Value;
-
+        /// <inheritdoc />
         public void Create(long productId, string email)
         {
             var observer = new ObservableProduct(productId, email);
@@ -44,6 +45,7 @@
             }
         }
 
+        /// <inheritdoc />
         public async Task Notify(long productId)
         {
             if (this.observed.ContainsKey(productId))

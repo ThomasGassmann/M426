@@ -9,8 +9,10 @@
     <div>
         <table>
             <tr>
+                @* Display all error messages *@
                 <td colspan="2">@this.Html.ValidationSummary()</td>
             </tr>
+            @* If it's a new product, select a strategy. *@
             @if (!this.Model.Id.HasValue)
             {
                 <tr>
@@ -25,6 +27,7 @@
                     </td>
                 </tr>
             }
+            @* Display all fields to edit. *@
             <tr>
                 <td>@this.Html.LabelFor(x => x.Title)</td>
                 <td>@this.Html.EditorFor(x => x.Title, new { htmlAttributes = new { @class = "form-control create-form-input" } })</td>
@@ -40,6 +43,7 @@
             <tr>
                 <td></td>
                 <td>
+                    @* Save or change the edit by triggering the form. *@
                     <input style="margin: 5px;" class="btn btn-default" type="submit" value="@(this.Model.Id.HasValue ? "Save Edit" : "Create")" />
                 </td>
             </tr>

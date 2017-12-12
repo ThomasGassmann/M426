@@ -5,7 +5,7 @@
     using ProductManagement.DataRepresentation.ViewModel;
 
     /// <summary>
-    /// Defines how to map an <see cref="EditProductViewModel"/> to an <see cref="ProductCreationDto"/>.
+    /// Defines how to map an <see cref="EditProductDto"/> to an <see cref="ProductCreationDto"/>.
     /// </summary>
     public class ProductCreationDtoMap : Profile
     {
@@ -15,7 +15,7 @@
         /// </summary>
         public ProductCreationDtoMap()
         {
-            this.CreateMap<EditProductViewModel, ProductCreationDto>()
+            this.CreateMap<EditProductDto, ProductCreationDto>()
                 .ForMember(x => x.Description, x => x.MapFrom(j => j.Description))
                 .ForMember(x => x.Price, x => x.MapFrom(j => j.Price))
                 .ForMember(x => x.Title, x => x.MapFrom(j => j.Title));

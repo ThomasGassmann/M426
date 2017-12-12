@@ -13,6 +13,7 @@
         <th>Edit</th>
         <th>Observe</th>
     </tr>
+    @* Display all products on the page. *@
     @foreach (var product in this.Model)
     {
         <tr>
@@ -20,10 +21,13 @@
             <td>@product.Price</td>
             <td>@product.Created</td>
             <td>@product.Updated</td>
-            <td><a class="btn btn-default" href="/Product/Edit/@product.Id">Edit</a></td>
+            @* Display a link to edit the product. *@
+            <td><a class="btn btn-default" href="/Product/Edit/@product.Id">Edit</a></td>            
+            @* Show the dialog to observe a product. *@
             <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#mailModal@(product.Id)">Observe</button></td>
         </tr>
     }
+    @* If no items are on this page, display a message. *@
     @if (!this.Model.Any())
     {
         <tr>
@@ -31,6 +35,7 @@
         </tr>
     }
     <tr>
+        @* Previous, next switcher. *@
         <td><button onclick="previous()" class="btn btn-default">Previous</button></td>
         <td></td>
         <td></td>
@@ -40,6 +45,7 @@
     </tr>
 </table>
 
+@* Create the dialog to observe a product for every product in the list. *@
 @foreach (var product in this.Model)
 {
     <div class="modal fade" id="mailModal@(product.Id)" role="dialog">
@@ -54,6 +60,7 @@
                     <input type="email" class="form-control" id="mail" />
                 </div>
                 <div class="modal-footer">
+                    @* The JS observe function will send an AJAX request to the server to save the obserrvation. *@
                     <button type="button" class="btn btn-default" onclick="observe(@product.Id)">Observe</button>
                 </div>
             </div>

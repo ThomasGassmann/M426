@@ -1,36 +1,51 @@
 ﻿namespace ProductManagement.Services.Core.Product.Edit
 {
     using AutoMapper;
-    using ProductManagement.DataRepresentation.Model;
-    using ProductManagement.DataRepresentation.ViewModel;
-    using ProductManagement.Services.Query;
-    using System.Linq;
     using ProductManagement.DataRepresentation.Dto;
+    using ProductManagement.DataRepresentation.Model;
+    using ProductManagement.Services.Query;
     using ProductManagement.Services.UoW;
+    using System.Linq;
 
+    /// <summary>
+    /// The service used to edit products.
+    /// </summary>
     public class ProductEditService : IProductEditService
     {
+        /// <summary>
+        /// The service to query data from the database.
+        /// </summary>
         private readonly IQueryService queryService;
 
+        /// <summary>
+        /// The unit of work factory to save changes to the database.
+        /// </summary>
         private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductEditService"/> class.
+        /// </summary>
+        /// <param name="queryService">The <see cref="IQueryService"/> dependency.</param>
+        /// <param name="unitOfWorkFactory">The <see cref="IUnitOfWorkFactory"/> dependency.</param>
         public ProductEditService(IQueryService queryService, IUnitOfWorkFactory unitOfWorkFactory)
         {
             this.queryService = queryService;
             this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public EditProductViewModel GetViewModel(long? id)
+        /// <inheritdoc />
+        public EditProductDto GetProductEditDto(long? id)
         {
             if (!id.HasValue)
             {
-                return new EditProductViewModel();
+                return new EditProductDto();
             }
 
             var fetched = this.queryService.Query<Product>().FirstOrDefault(x => x.Id == id);
-            return Mapper.Map<EditProductViewModel>(fetched);
+            return Mapper.Map<EditProductDto>(fetched);
         }
 
+        /// <inheritdoc />
         public void SaveEdit(long id, ProductCreationDto edited)
         {
             using (var unitOfWork = this.unitOfWorkFactory.CreateUnitOfWork())
