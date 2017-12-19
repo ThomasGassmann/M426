@@ -116,7 +116,7 @@
         /// <param name="viewModel">The view model sent by the form.</param>
         /// <returns>Returns a redirect or the error messages in the view.</returns>
         [HttpPost("[controller]/Edit/{id?}")]
-        public IActionResult SaveEdit(EditProductDto viewModel)
+        public IActionResult SaveEdit(EditProductViewModel viewModel)
         {
             this.TryUpdateModelAsync(viewModel).Wait();
             if (this.ModelState.IsValid)

@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// This business rule will set the update date for all added items
+    /// This business rule will set the update date for all updated items
     /// before saving the entity to the database.
     /// </summary>
     public class UpdatedBusinessRule : BusinessRuleBase<IUpdated>

@@ -18,7 +18,7 @@
     {
         <tr>
             <td>@product.Title</td>
-            <td>@product.Price</td>
+            <td>@string.Format("{0:0.00}", product.Price) CHF</td>
             <td>@product.Created</td>
             <td>@product.Updated</td>
             @* Display a link to edit the product. *@

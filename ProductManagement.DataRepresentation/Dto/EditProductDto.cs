@@ -1,8 +1,5 @@
 ﻿namespace ProductManagement.DataRepresentation.Dto
 {
-    using Microsoft.AspNetCore.Mvc;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// Defines the view model used to create and edit products.
     /// </summary>

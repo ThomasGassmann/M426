@@ -47,12 +47,12 @@
         /// <param name="services">The collection to configure.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var mailConfiguration = JsonConvert.DeserializeObject<SmtpSettings>(
-                this.Configuration.GetSection("Smtp").Value);
-            services.AddSingleton<ISmtpSettings, SmtpSettings>();
+            var mailConfiguration = this.Configuration.GetSection("Smtp").Get<SmtpSettings>();
+            services.AddSingleton<ISmtpSettings>(x => mailConfiguration);
             var connectionString = this.Configuration.GetConnectionString("DefaultConnection");
             // Register all auto mapper types in the assembly of the given type.
             Mapper.Initialize(x => x.AddProfiles(new[] { typeof(Product) }));
+            Mapper.AssertConfigurationIsValid();
             services.AddMvc();
             // Registers the database context.
             services.AddDbContext<ProductManagementDbContext>(x => 

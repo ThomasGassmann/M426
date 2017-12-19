@@ -19,7 +19,9 @@
                 .ForMember(x => x.Description, x => x.MapFrom(j => j.Description))
                 .ForMember(x => x.Price, x => x.MapFrom(j => j.Price))
                 .ForMember(x => x.Title, x => x.MapFrom(j => j.Title))
-                .ForMember(x => x.Id, x => x.Ignore());
+                .ForMember(x => x.Id, x => x.Ignore())
+                .ForMember(x => x.Created, x => x.Ignore())
+                .ForMember(x => x.Updated, x => x.Ignore());
         }
     }
 }
